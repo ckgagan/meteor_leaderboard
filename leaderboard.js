@@ -20,15 +20,20 @@ if (Meteor.is_client) {
   Template.leaderboard.events = {
     'click input.inc': function () {
       Players.update(Session.get("selected_player"), {$inc: {score: 5}});
-    }
-  };
-
-  Template.leaderboard.events = {
+    },
     'click input.remove': function() {
       var player = Players.findOne(Session.get("selected_player"));
       Players.remove({_id: player._id})
     }
+
   };
+
+  // Template.leaderboard.events = {
+  //   'click input.remove': function() {
+  //     var player = Players.findOne(Session.get("selected_player"));
+  //     Players.remove({_id: player._id})
+  //   }
+  // };
 
   Template.player.events = {
     'click': function () {
